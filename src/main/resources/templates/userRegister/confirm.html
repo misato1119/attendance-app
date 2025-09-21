@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ユーザー登録内容確認</title>
+</head>
+<body>
+    <h1>ユーザー登録内容の確認</h1>
+    
+    <p>社員番号　：<span th:text="${userForm.employeeNumber}"></span></p>
+    <p>ユーザー名：<span th:text="${userForm.username}"></span></p>
+    <p>メールアドレス：<span th:text="${userForm.email}"></span></p>
+
+	<form th:action="@{/register/complete}" method="post" th:object="${userForm}">
+		<input type="hidden" th:field="*{employeeNumber}">
+		<input type="hidden" th:field="*{username}">
+		<input type="hidden" th:field="*{email}">
+		<input type="hidden" th:field="*{password}">
+		<button type="submit">送信</button>
+	</form>
+	
+	<form th:action="@{/register}" method="get">
+		<button type="submit">戻る</button>
+	</form>
+	
+</body>
+</html>

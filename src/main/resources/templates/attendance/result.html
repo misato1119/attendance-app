@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<!--Thymeleafが認識するための固定文字列
+　　URLを変更すると動かない-->
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>打刻結果</title>
+</head>
+
+<body>
+	<h2 th:text="${message}"></h2>
+	
+	<p th:if="${workingTime != null}">
+		<!--文章の一部として時間を表示させたいからspanタグを使用
+		workingTimeはAttendanceService.javaのclockOutメソッドの戻り値-->
+		勤務時間：<span th:text="${workingTime}"></span>
+	</p>
+	
+	<form th:action="@{/attendance/clockin}" method="post">
+		<button type="submit">出勤</button>
+	</form>
+	
+	<form th:action="@{/attendance/clockout}" method="post">
+		<button type="submit">退勤</button>
+	</form>
+
+</body>
+
+</html>

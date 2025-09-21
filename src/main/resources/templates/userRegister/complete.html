@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ユーザー登録完了</title>
+</head>
+<body>
+    <h1>ユーザー登録完了</h1>
+    
+    <p>社員番号　：<span th:text="${userForm.employeeNumber}"></span></p>
+    <p>ユーザー名：<span th:text="${userForm.username}"></span></p>
+    <p>メールアドレス：<span th:text="${userForm.email}"></span></p>
+	
+	
+	<form th:action="@{/login/login}" method="get">
+    	<button type="submit">ログインする</button>
+	</form>
+	
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ホーム</title>
+</head>
+<body>
+    <h1>ホーム画面</h1>
+	
+	<!-- ログインユーザー名の表示 -->
+	<p>ようこそ、<span th:text="${#authentication.name}"></span>さん！</p>
+	
+	<!-- ロール権限の表示 -->
+	<p>あなたの権限：<span th:text="${#authentication.authorities}"></span></p>
+	
+	<!-- 水平に線を入れる -->
+	<hr>
+	
+	<!-- メニューリンク -->
+	<ul>
+		<li><a th:href="@{/attendance/clock}">勤怠打刻</a></li>
+		<li><a th:href="@{/user/list}">ユーザー一覧</a></li>
+	</ul>
+	<hr>
+	
+	<!-- ログアウト -->
+	<form th:action="@{/logout}" method="post">
+		<button type="submit">ログアウト</button>
+	</form>
+</body>
+</html>

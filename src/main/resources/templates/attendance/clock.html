@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>勤怠打刻</title>
+</head>
+<body>
+    <h1>勤怠打刻テスト</h1>
+
+    <!-- 出勤ボタン -->
+    <form th:action="@{/attendance/clockin}" method="post">
+        <button type="submit">出勤</button>
+    </form>
+
+    <!-- 退勤ボタン -->
+    <form th:action="@{/attendance/clockout}" method="post">
+        <button type="submit">退勤</button>
+    </form>
+</body>
+</html>
