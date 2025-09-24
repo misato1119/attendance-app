@@ -2,7 +2,6 @@ package com.github.misato1119.attendanceapp.repository;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -16,7 +15,7 @@ public interface AttendanceRecordRepository extends JpaRepository<AttendanceReco
 	List<AttendanceRecord> findByUser(User user);
 	
 	// 特定ユーザーの特定日付の勤怠を取得する
-	AttendanceRecord findByUserAndWorkDate(Optional<User> user, LocalDate workDate);
+	AttendanceRecord findByUserAndWorkDate(User user, LocalDate workDate);
 	
 	// 削除フラグがfalse（削除されていない）の勤怠を取得する
 	List<AttendanceRecord> findByUserAndDeletedFalse(User user);

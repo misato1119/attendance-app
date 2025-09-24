@@ -18,12 +18,8 @@
 		勤務時間：<span th:text="${workingTime}"></span>
 	</p>
 	
-	<form th:action="@{/attendance/clockin}" method="post">
-		<button type="submit">出勤</button>
-	</form>
-	
-	<form th:action="@{/attendance/clockout}" method="post">
-		<button type="submit">退勤</button>
+	<form th:action="@{/common/home}" method="get">
+		<button type="submit">ホーム画面に戻る</button>
 	</form>
 
 </body>

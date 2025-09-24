@@ -20,7 +20,7 @@ public class SecurityConfig {
 				)
 			.formLogin(form -> form
 					.loginPage("/login")	// ログインページのURL
-					.defaultSuccessUrl("/home", true)	// ログイン成功時の遷移先
+					.defaultSuccessUrl("/common/home", true)	// ログイン成功時の遷移先
 					.permitAll()	// 誰でも遷移可能
 					)
 			.logout(logout -> logout

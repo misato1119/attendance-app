@@ -5,16 +5,24 @@
     <title>勤怠打刻</title>
 </head>
 <body>
-    <h1>勤怠打刻テスト</h1>
+    <h1>勤怠打刻</h1>
 
     <!-- 出勤ボタン -->
     <form th:action="@{/attendance/clockin}" method="post">
+		<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
         <button type="submit">出勤</button>
     </form>
 
     <!-- 退勤ボタン -->
     <form th:action="@{/attendance/clockout}" method="post">
+		<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
         <button type="submit">退勤</button>
+    </form>
+    
+     <!-- 月次勤怠確認ボタン -->
+    <form th:action="@{/attendance/monthlyAttendance}" method="post">
+		<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+        <button type="submit">月次勤怠確認</button>
     </form>
 </body>
 </html>

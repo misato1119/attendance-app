@@ -2,9 +2,9 @@ package com.github.misato1119.attendanceapp.service;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.github.misato1119.attendanceapp.entity.AttendanceRecord;
@@ -24,8 +24,10 @@ public class AttendanceService {
 	
 	// 出勤打刻
 	public void clockIn(String employeeNumber) {
-		Optional<User> user = userRepository.findByEmployeeNumber(employeeNumber);
-		
+		User user = userRepository.findByEmployeeNumber(employeeNumber)
+	            .orElseThrow(() -> new UsernameNotFoundException("社員番号が存在しません: " + employeeNumber));
+
+
 		LocalDate today = LocalDate.now();
 		AttendanceRecord record = attendanceRecordRepository.findByUserAndWorkDate(user, today);
 		if(record == null) {
@@ -41,7 +43,9 @@ public class AttendanceService {
 	
 	// 退勤打刻
 	public String clockOut(String employeeNumber) {
-		Optional<User> user = userRepository.findByEmployeeNumber(employeeNumber);
+		User user = userRepository.findByEmployeeNumber(employeeNumber)
+	            .orElseThrow(() -> new UsernameNotFoundException("社員番号が存在しません: " + employeeNumber));
+
 		
 		LocalDate today = LocalDate.now();
 		AttendanceRecord record = attendanceRecordRepository.findByUserAndWorkDate(user, today);

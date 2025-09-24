@@ -3,6 +3,7 @@ package com.github.misato1119.attendanceapp.service;
 import java.time.LocalDateTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.github.misato1119.attendanceapp.entity.User;
@@ -17,6 +18,9 @@ public class UserRegistrationService {
 	@Autowired
 	private UserRepository userRepository;
 	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+	
 	
 	// ユーザー登録
 	public void UserService(UserRepository userRepository) {
@@ -29,8 +33,10 @@ public class UserRegistrationService {
 		user.setEmployeeNumber(form.getEmployeeNumber());
 		user.setUsername(form.getUsername());
 		user.setEmail(form.getEmail());
-		user.setPassword(form.getPassword());
-		user.setRole("ROLE_USER");
+		// パスワードのハッシュ化
+		String encoredPassword = passwordEncoder.encode(form.getPassword());
+		user.setPassword(encoredPassword);
+		user.setRole("USER");
 		user.setDeleted(false);
 		user.setCreatedAt(LocalDateTime.now());
 		user.setUpdatedAt(LocalDateTime.now());
