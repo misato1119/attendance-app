@@ -20,10 +20,10 @@
 		</tr>
 		<tr th:each="record : ${records}">
 			<td th:text="${record.workDate.dayOfMonth}"></td>
-			<tb th:text="#temporals.format(record.workDate, 'E')}"></tb>
-			<tb th:text="${record.clockIn}"></tb>
-			<tb th:text="${record.clockOut}"></tb>
-			<tb th:text="${record.workingHours}"></tb>
+			<td th:text="${#temporals.format(record.workDate, 'E')}"></td>
+			<td th:text="${#temporals.format(record.clockIn, 'HH:mm')}"></td>
+			<td th:text="${#temporals.format(record.clockOut, 'HH:mm')}"></td>
+			<td th:text="${record.workingHours}"></tb>
 		</tr>
 	</table>
 
