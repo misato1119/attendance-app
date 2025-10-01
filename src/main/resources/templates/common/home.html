@@ -25,7 +25,9 @@
 		<li><a th:href="@{/attendance/clock}">勤怠打刻</a></li>
 		<li><a th:href="@{/monthlyAttendance/monthlyAttendance}">月次勤怠確認</a></li>
 		<div sec:authorize="hasRole('ADMIN')">
+			<li><a th:href="@{/user/userinfo}">ユーザー情報編集</a></li>
 			<li><a th:href="@{/user/list}">ユーザー一覧</a></li>
+			<li><a th:href="@{/approval/list}">申請承認</a></li>
 		</div>
 	</ul>
 	<hr>
