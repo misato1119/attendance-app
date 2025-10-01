@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>月次勤怠確認</title>
+</head>
+<body>
+    <h1>月次勤怠確認</h1>
+
+    <!-- 月指定プルダウン -->
+    <form th:action="@{/monthlyAttendance/check}" method="get">
+		<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+		<label form="months">対象年月：</label>
+		<select id="targetMonth" name="targetMonth">
+			<option th:each="m : ${month}"
+					th:value="${m}"
+					th:text="${#temporals.format(m, 'yyyy年MM月')}"></option>
+		</select>
+        <button type="submit">表示</button>
+    </form>
+    
+</body>
+</html>

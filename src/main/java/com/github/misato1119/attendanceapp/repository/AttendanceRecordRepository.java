@@ -17,6 +17,9 @@ public interface AttendanceRecordRepository extends JpaRepository<AttendanceReco
 	// 特定ユーザーの特定日付の勤怠を取得する
 	AttendanceRecord findByUserAndWorkDate(User user, LocalDate workDate);
 	
+	// 特定ユーザーの月次勤怠を取得する
+	List<AttendanceRecord> findByUserAndWorkDateBetween(User use, LocalDate start, LocalDate end);
+	
 	// 削除フラグがfalse（削除されていない）の勤怠を取得する
 	List<AttendanceRecord> findByUserAndDeletedFalse(User user);
 	

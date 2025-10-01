@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>勤怠確認</title>
+</head>
+
+<body>
+	<h2 th:text="${#temporals.format(targetMonth, 'yyyy年MM月')} + 'の勤怠'"></h2>
+
+	<!-- 勤怠確認 -->
+	<table border="1">
+		<tr>
+			<th>日</th>
+			<th>曜日</th>
+			<th>出勤時刻</th>
+			<th>退勤時刻</th>
+			<th>勤務時間</th>
+		</tr>
+		<tr th:each="record : ${records}">
+			<td th:text="${record.workDate.dayOfMonth}"></td>
+			<tb th:text="#temporals.format(record.workDate, 'E')}"></tb>
+			<tb th:text="${record.clockIn}"></tb>
+			<tb th:text="${record.clockOut}"></tb>
+			<tb th:text="${record.workingHours}"></tb>
+		</tr>
+	</table>
+
+	<form th:action="@{/common/home}" method="get">
+		<button type="submit">ホーム画面に戻る</button>
+	</form>
+
+</body>
+
+</html>
