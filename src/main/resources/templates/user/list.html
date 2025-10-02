@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <meta charset="UTF-8">
-    <title>ユーザー一覧</title>
+	<meta charset="UTF-8">
+	<title>ユーザー一覧</title>
 </head>
+
 <body>
-    <h1>ユーザー一覧</h1>
+	<h1>ユーザー一覧</h1>
 
 	<!-- ユーザー一覧表 -->
 	<table border="1">
@@ -21,8 +23,18 @@
 			<td th:text="${user.username}"></td>
 			<td th:text="${user.email}"></td>
 			<td th:text="${user.role}"></td>
-			<td th:text="${user.deleted}"></td>
+			<td th:text="${user.deleted} ? '退社済' : '在籍'"></td>
+			<td>
+				<form th:action="@{/user/edit}" method="get">
+					<button type="submit">編集</button>
+				</form>
+			</td>
 		</tr>
 	</table>
+
+	<form th:action="@{/common/home}" method="get">
+		<button type="submit">ホーム画面に戻る</button>
+	</form>
 </body>
+
 </html>
