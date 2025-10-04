@@ -20,6 +20,8 @@ public class ManthlyAttendanceService {
 	
 	@Autowired
 	AttendanceRecordRepository attendanceRecordRepository;
+	
+	// 月次勤怠データ取得
 	public List<AttendanceRecord> findByMonth(String employeeNumber, YearMonth ym){
 		// 社員番号からUserを取得
 		User user = userRepository.findByEmployeeNumber(employeeNumber)
@@ -29,4 +31,14 @@ public class ManthlyAttendanceService {
 		LocalDate end = ym.atEndOfMonth();
 		return attendanceRecordRepository.findByUserAndWorkDateBetween(user, start, end);
 	}
+	
+	// 合計勤務時間取得
+	public double calculateTotalWorkingHours(List<AttendanceRecord> records) {
+		return records.stream()
+				.filter(r -> r.getWorkingHours() != null)
+				.mapToDouble(AttendanceRecord::getWorkingHours)
+				.sum();
+	}
+	
+	
 }

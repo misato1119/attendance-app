@@ -18,14 +18,20 @@
 			<th>退勤時刻</th>
 			<th>勤務時間</th>
 		</tr>
-		<tr th:each="record : ${records}">
+		<tr th:each="record, iter : ${records}">
 			<td th:text="${record.workDate.dayOfMonth}"></td>
 			<td th:text="${#temporals.format(record.workDate, 'E')}"></td>
 			<td th:text="${#temporals.format(record.clockIn, 'HH:mm')}"></td>
 			<td th:text="${#temporals.format(record.clockOut, 'HH:mm')}"></td>
-			<td th:text="${record.workingHours}"></tb>
+			<td th:text="${workingTimes[__${iter.index}__]}"></td>
 		</tr>
 	</table>
+
+	<p>
+		<strong>合計勤務時間：</strong>
+		<span th:text="${displayTime}"></span>
+	</p>
+
 
 	<form th:action="@{/common/home}" method="get">
 		<button type="submit">ホーム画面に戻る</button>

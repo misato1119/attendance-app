@@ -54,13 +54,33 @@ public class ManthlyAttendanceController {
 		// 勤怠データを取得
 		List<AttendanceRecord> records = manthlyAttendanceService.findByMonth(employeeNumber, ym);
 		
+		// 合計時間を算出
+		double total = manthlyAttendanceService.calculateTotalWorkingHours(records);
+		int hours = (int) Math.floor(total);
+		int minutes = (int) Math.round((total % 1) * 60);
+
+		String displayTime = hours + " 時間 " + minutes + " 分";
+		
+		// 勤務時間のフォーマットをHH:MMに変更する
+		List<String> workingTimes = records.stream()
+		        .map(r -> formatWorkingTime(r.getWorkingHours()))
+		        .toList();
+
 		// modelに勤怠データを格納
 		model.addAttribute("records", records);
 		model.addAttribute("targetMonth", ym);
+		model.addAttribute("workingTimes",workingTimes);
+		model.addAttribute("displayTime", displayTime);
 		
 		return "monthlyAttendance/check";
 	}
 	
-	
+	// 勤務時間のフォーマット変更（HH:MM）
+	private String formatWorkingTime(Double hours) {
+		int h = hours.intValue();
+		int m = (int) Math.round((hours % 1) * 60);
+		return String.format("%d:%02d", h, m);
+		
+	}
 	
 }
