@@ -25,12 +25,13 @@
 		<li><a th:href="@{/attendance/clock}">勤怠打刻</a></li>
 		<li><a th:href="@{/monthlyAttendance/monthlyAttendance}">月次勤怠確認</a></li>
 		<li><a th:href="@{/apply/list}">申請状況確認</a></li>
+		<li><a th:href="@{/mypage/}">マイページ</a></li>
 		
 
 		<div sec:authorize="hasRole('ADMIN')">
 			<h4>管理者専用機能</h4>
 			<li><a th:href="@{/user/list}">ユーザー一覧</a></li>
-			<li><a th:href="@{/data/userlist}">勤怠データ閲覧</a></li>
+			<li><a th:href="@{/data/attendancelist}">勤怠データ閲覧</a></li>
 			<li><a th:href="@{/approval/list}">承認待ち一覧</a></li>
 		</div>
 	</ul>
