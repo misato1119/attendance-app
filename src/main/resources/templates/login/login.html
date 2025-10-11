@@ -19,6 +19,10 @@
 			</label>
 		</div>
 		<button type="submit">ログインする</button>
+		
+		<div>
+			<a th:href="@{/register}">ユーザー登録はこちら</a>
+		</div>
 	</form>
 	
 	<div th:if="${param.error}">
