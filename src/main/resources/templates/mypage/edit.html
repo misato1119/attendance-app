@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>登録情報の編集</title>
+</head>
+
+<body>
+	<h1>登録情報の編集</h1>
+
+	<form th:action="@{/mypage/update}" th:object="${user}" method="post">
+		<input type="hidden" th:field="*{id}" />
+		<div>
+			<label>社員番号：</label>
+			<input type="text" th:field="*{employeeNumber}" readonly/>
+		</div>
+		<div>
+			<label>名前：</label>
+			<input type="text" th:field="*{username}" required/>
+		</div>
+		<div>
+			<label>メールアドレス：</label>
+			<input type="email" th:field="*{email}">
+		</div>
+		<div>
+			<button type="submit">変更申請</button>
+			<a th:href="@{/mypage/mypage}">キャンセル</a>
+		</div>
+		
+	</form>
+</body>
+
+</html>

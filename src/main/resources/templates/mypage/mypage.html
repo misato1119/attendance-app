@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>マイページ</title>
+</head>
+
+<body>
+	<h1>マイページ</h1>
+
+	<!-- マイページ表示 -->
+	
+    <p>社員番号：<span th:text="${user.employeeNumber}"></span></p>
+    <p>ユーザー名：<span th:text="${user.username}"></span></p>
+    <p>メールアドレス：<span th:text="${user.email}"></span></p>
+    <p>パスワード：XXXXXXXXX</p>
+
+
+	<a th:href="@{/mypage/edit}">プロフィール編集</a>
+	<a th:href="@{/mypage/password_change}">パスワード変更</a>
+	
+	<form th:action="@{/common/home}" method="get">
+		<button type="submit">ホーム画面に戻る</button>
+	</form>
+</body>
+
+</html>

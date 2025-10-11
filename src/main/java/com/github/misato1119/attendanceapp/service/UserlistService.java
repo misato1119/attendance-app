@@ -28,7 +28,7 @@ public class UserlistService {
 	public User updateUser(User user) {
 		// 既存のデータを取得
 		User existing = userRepository.findById(user.getId())
-						.orElseThrow(() -> new IllegalArgumentException("Invalid user ID: " + user.getId()));
+						.orElseThrow(() -> new IllegalArgumentException("このユーザーIDは存在しません: " + user.getId()));
 		
 		existing.setUsername(user.getUsername());
 		existing.setEmail(user.getEmail());
