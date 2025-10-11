@@ -23,7 +23,7 @@
 			<td th:text="${#temporals.format(record.workDate, 'E')}"></td>
 			<td th:text="${#temporals.format(record.clockIn, 'HH:mm')}"></td>
 			<td th:text="${#temporals.format(record.clockOut, 'HH:mm')}"></td>
-			<td th:text="${workingTimes[__${iter.index}__]}"></td>
+			<td th:text="${workingTimes[__${iter.index}__]} ?: ''"></td>
 		</tr>
 	</table>
 

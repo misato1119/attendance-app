@@ -77,6 +77,9 @@ public class ManthlyAttendanceController {
 	
 	// 勤務時間のフォーマット変更（HH:MM）
 	private String formatWorkingTime(Double hours) {
+		if(hours == null) {
+			return "";
+		}
 		int h = hours.intValue();
 		int m = (int) Math.round((hours % 1) * 60);
 		return String.format("%d:%02d", h, m);
